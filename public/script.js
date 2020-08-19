@@ -10,7 +10,7 @@ function getLinkres() {
   let code = query.match(/(\d+)/g);
   let type = document.getElementById("fileType").value;
   let linkres = document.getElementById("linkres");
-  let mangadl = `/download/nhentai/${code}/${type}`;
+  let mangadl = `/download/nhentai/${code}/?e=${type}`;
 
   if (query) {
     document.getElementById("btnGetLink").href = mangadl;
