@@ -14,47 +14,15 @@ app.get("/", function(req, res) {
   res.sendFile(__dirname + "/views/index.html");
 });
 
-app.get("/download/nhentai/:code/zip", async function(req, res, next) {
+app.get("/download/nhentai/:code/", async function(req, res, next) {
   let code = req.params.code;
-  let api = await getGalleryData(code);
-
-  var start = 0;
-  var end = api.num_pages;
-  if (!Number.isInteger(start));
-  if (!Number.isInteger(end));
-  if (start > end) end = start;
-  res.writeHead(200, {
-    "Content-Type": "application/zip",
-    "Content-disposition": `attachment; filename=${code}.zip`
-  });
-  var zip = archiver("zip", {
-    store: true
-  });
-  zip.pipe(res);
-  var now = start;
-  var finish = end - start + 1;
-  while (now <= end) {
-    download_photo(
-      `https://i.nhentai.net/galleries/${api.media_id}/${now}.`,
-      now,
-      0,
-      function(url, name, type, cnt) {
-        if (cnt <= 4) {
-          var stream = request(url + type);
-          zip.append(stream, {
-            name: path.join(`${api.title.pretty}(${code})`, `${name}.${type}`)
-          });
-        }
-        if (--finish === 0) zip.finalize();
-      }
-    );
-    now++;
-    await sleep(100);
+  let ext;
+  if (req.query.e == "zip" || !req.query.e || req.query.e !== "cbz") {
+    ext = "zip";
+  } else {
+    ext = "cbz"
   }
-});
-
-app.get("/download/nhentai/:code/cbz", async function(req, res, next) {
-  let code = req.params.code;
+  
   let api = await getGalleryData(code);
 
   var start = 0;
@@ -64,7 +32,7 @@ app.get("/download/nhentai/:code/cbz", async function(req, res, next) {
   if (start > end) end = start;
   res.writeHead(200, {
     "Content-Type": "application/zip",
-    "Content-disposition": `attachment; filename=${code}.cbz`
+    "Content-disposition": `attachment; filename=${code}.${ext}`
   });
   var zip = archiver("zip", {
     store: true
