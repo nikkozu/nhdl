@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>nHentai Downloader</title>
+
+    <meta name="description" content="Manga H Downloader (zip and cbz)" />
+    <link
+      id="favicon"
+      rel="icon"
+      href="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSAFHYqeZBo3cGMSYzo3TrNk8tUEDVtIwCALEmehlfK_SAf68JF"
+    />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+      integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <script type="text/javascript" src="/script.js"></script>
+  </head>
+  <body>
+    <div class="container mt-4">
+      <h1 class="border-bottom">Welcome to nHentai Downloader</h1>
+      <div class="about-border"></div>
+      <h3>
+        Downloader is provided by
+        <a
+          href="https://github.com/moedevel/mangadl"
+          target="_blank"
+          class="text-decoration-none"
+          >MangaDL</a
+        >
+      </h3>
+      <form class="form-inline mb-2">
+        <input
+          class="form-control mb-2 mr-sm-2 col-lg-3"
+          type="text"
+          id="code"
+          placeholder="Enter code here"
+          onkeypress="handle(event)"
+        />
+        <select class="custom-select mb-2 mr-sm-2" id="fileType">
+          <option selected value="zip">.zip</option>
+          <option value="cbz">.cbz</option>
+        </select>
+      </form>
+      <a
+        href="#"
+        id="btnGetLink"
+        class="btn btn-primary mb-2"
+        onclick="getLinkres();"
+      >
+        Click to download
+      </a>
+    </div>
+    <div class="container mt-5">
+      <div class="text-center center-block">
+        <p class="txt-railway">- Rin! -</p>
+        <div class="center">
+          <a href="https://arxist.com/tip/masami" target="_blank"
+            ><img
+              class="social"
+              height="40"
+              src="https://github.com/masami45/masami45/blob/master/buttons.png?raw=true"
+          /></a>
+          <a
+            href="https://github.com/masami45/nhdl"
+            target="_blank"
+            ><i class="fab fa-github fa-2x social"></i
+          ></a>
+          <a href="https://discord.gg/X3yeKgN" target="_blank"
+            ><i class="fab fa-discord fa-2x social"></i
+          ></a>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
