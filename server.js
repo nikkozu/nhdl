@@ -16,11 +16,13 @@ app.get("/", function(req, res) {
 
 app.get("/download/nhentai/:code/", async function(req, res, next) {
   let code = req.params.code;
-  let ext;
+  let ext, contentType;
   if (req.query.e == "zip" || !req.query.e || req.query.e !== "cbz") {
     ext = "zip";
+    contentType = "application/zip";
   } else {
     ext = "cbz"
+    contentType = "application/vnd.comicbook+zip"
   }
   
   let api = await getGalleryData(code);
@@ -31,7 +33,7 @@ app.get("/download/nhentai/:code/", async function(req, res, next) {
   if (!Number.isInteger(end));
   if (start > end) end = start;
   res.writeHead(200, {
-    "Content-Type": "application/zip",
+    "Content-Type": contentType,
     "Content-disposition": `attachment; filename=${code}.${ext}`
   });
   var zip = archiver("zip", {
